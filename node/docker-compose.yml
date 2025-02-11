@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  miden-node:
+    build: .
+    container_name: miden-node
+    ports:
+      - "57291:57291"  # RPC API
+      - "48046:48046"  # Block producer
+      - "28943:28943"  # Store service
+    volumes:
+      - ./node/storage:/app/node/storage  # Persistent storage
+    restart: unless-stopped
